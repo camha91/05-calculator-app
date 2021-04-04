@@ -94,185 +94,176 @@ export default class Calculator extends Component {
   };
 
   render() {
+    const styledEqualBtn = {
+      height: "100%",
+      gridArea: "3 / 5 / 5 / 6",
+    };
+
+    const styledZeroBtn = {
+      width: "100%",
+      gridArea: "4 / 1 / 4 / 3",
+    };
+
     return (
-      <div className="container">
-        <div className="display">{this.state.displayScreenValue}</div>
-        <table className="table">
-          <tbody>
-            <tr>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  7
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  8
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  9
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  /
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  CE
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  4
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  5
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  6
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  *
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  C
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  1
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  2
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  3
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  -
-                </button>
-              </td>
-              <td rowSpan="2" height="50px">
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  style={{ width: "100%", height: "100%" }}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  =
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="2">
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  style={{ width: "100%" }}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  0
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  .
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={(e) => this.onClick(e.target.textContent)}
-                  type="button"
-                  className="btn btn-default border"
-                >
-                  +
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="calculator-app">
+        <input
+          type="text"
+          className="calculator-display"
+          value={this.state.displayScreenValue}
+          disabled
+        />
+        <div className="calculator-keys">
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="7"
+          >
+            7
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="8"
+          >
+            8
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="9"
+          >
+            9
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="operator btn btn-info border"
+            value="/"
+          >
+            /
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="clear-entry function btn btn-warning border"
+            value="CE"
+          >
+            CE
+          </button>
+
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="4"
+          >
+            4
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="5"
+          >
+            5
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="6"
+          >
+            6
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="operator btn btn-info border"
+            value="*"
+          >
+            *
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="all-clear function btn btn-danger border"
+            value="C"
+          >
+            C
+          </button>
+
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="1"
+          >
+            1
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="2"
+          >
+            2
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="3"
+          >
+            3
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="operator btn btn-info border"
+            value="*"
+          >
+            -
+          </button>
+
+          <button
+            style={styledZeroBtn}
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="btn btn-secondary border"
+            value="0"
+          >
+            0
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="decimal function btn btn-primary border"
+            value="."
+          >
+            .
+          </button>
+          <button
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="operator btn btn-info border"
+            value="+"
+          >
+            +
+          </button>
+
+          <button
+            style={styledEqualBtn}
+            onClick={(e) => this.onClick(e.target.value)}
+            type="button"
+            className="equal-sign operator btn btn-success border"
+            value="="
+          >
+            =
+          </button>
+        </div>
       </div>
     );
   }
