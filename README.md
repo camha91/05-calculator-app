@@ -15,4 +15,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### SNEEK PEAK
 
-![alt text](http://url/to/calculator-react.png)
+![project photo](calculator-react.png)
+
