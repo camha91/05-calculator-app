@@ -4,7 +4,7 @@ import "./Calculator.css";
 const initialState = {
   result: 0,
   current: "0",
-  lastOperator: "",
+  lastOperator: "+",
   displayScreenValue: "0",
   duplicatingCount: 0,
 };
@@ -24,9 +24,9 @@ export default class Calculator extends Component {
   };
 
   updateState = (newOperator) => {
-    if (this.state.duplicatingCount < 1) {
-      let tempResult;
+    let tempResult;
 
+    if (this.state.duplicatingCount < 1) {
       if ("+-*/=".indexOf(this.state.lastOperator) !== -1) {
         switch (this.state.lastOperator) {
           case "+":
@@ -96,7 +96,7 @@ export default class Calculator extends Component {
   render() {
     return (
       <div className="container">
-        <div className="display border">{this.state.displayScreenValue}</div>
+        <div className="display">{this.state.displayScreenValue}</div>
         <table className="table">
           <tbody>
             <tr>
