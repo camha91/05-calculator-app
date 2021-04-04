@@ -6,6 +6,7 @@ const initialState = {
   current: "0",
   lastOperator: "",
   displayScreenValue: "0",
+  duplicatingCount: 0,
 };
 
 export default class Calculator extends Component {
@@ -23,37 +24,36 @@ export default class Calculator extends Component {
   };
 
   updateState = (newOperator) => {
-    let tempResult;
+    if (this.state.duplicatingCount < 1) {
+      let tempResult;
 
-    if (this.state.lastOperator) {
-      if (this.state.lastOperator === "+") {
-        tempResult =
-          parseFloat(this.state.result) + parseFloat(this.state.current);
-        console.log(tempResult);
-      } else if (this.state.lastOperator === "-") {
-        tempResult = this.state.result - parseFloat(this.state.current);
-      } else if (this.state.lastOperator === "*") {
-        tempResult = this.state.result * parseFloat(this.state.current);
-      } else if (this.state.lastOperator === "/") {
-        tempResult = this.state.result / parseFloat(this.state.current);
-      } else if (this.state.lastOperator === "=") {
+      if ("+-*/=".indexOf(this.state.lastOperator) !== -1) {
+        switch (this.state.lastOperator) {
+          case "+":
+            tempResult =
+              parseFloat(this.state.result) + parseFloat(this.state.current);
+            break;
+          case "-":
+            tempResult =
+              parseFloat(this.state.result) - parseFloat(this.state.current);
+            break;
+          case "*":
+            tempResult =
+              parseFloat(this.state.result) * parseFloat(this.state.current);
+            break;
+          default:
+            tempResult =
+              parseFloat(this.state.result) / parseFloat(this.state.current);
+        }
         this.setState({
           result: tempResult,
           current: "0",
-          lastOperator: "",
-          displayScreenValue: tempResult.toString(),
+          displayScreenValue: tempResult,
         });
       }
+
       this.setState({
-        result: tempResult,
-        current: "0",
-        displayScreenValue: tempResult.toString(),
-      });
-    } else {
-      this.setState({
-        result: parseInt(this.state.current),
-        current: "0",
-        displayScreenValue: this.state.current.toString(),
+        duplicatingCount: this.state.duplicatingCount + 1,
       });
     }
 
@@ -63,14 +63,7 @@ export default class Calculator extends Component {
   };
 
   onClick = (buttonValue) => {
-    if (
-      buttonValue === "+" ||
-      buttonValue === "-" ||
-      buttonValue === "*" ||
-      buttonValue === "/" ||
-      buttonValue === "="
-    ) {
-      console.log("Button + is clicked");
+    if ("+-*/=".indexOf(buttonValue) !== -1) {
       this.updateState(buttonValue);
     } else if (buttonValue === "C") {
       this.reset();
@@ -90,12 +83,15 @@ export default class Calculator extends Component {
           displayScreenValue: this.state.current + buttonValue,
         });
       }
+      this.setState({
+        duplicatingCount: 0,
+      });
     }
   };
 
-  componentDidUpdate() {
+  componentDidUpdate = () => {
     console.log(`state: ${JSON.stringify(this.state)}`);
-  }
+  };
 
   render() {
     return (

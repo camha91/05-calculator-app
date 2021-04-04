@@ -1,4 +1,5 @@
 .container {
+    border: 1px solid #0000ff;
     width: 400px;
     padding-top: 70px;
     padding-bottom: 15px;
@@ -9,13 +10,12 @@
 .display {
     width: 100%;
     height: 40px;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     text-align: right;
 }
 
 .table {
     width: 300px;
-    border-spacing: 0.5rem;
 }
 
 td {
